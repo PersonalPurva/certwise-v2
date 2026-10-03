@@ -57,6 +57,8 @@
           <td>Published this copy as its own repository, <a href="https://github.com/PersonalPurva/certwise-v2">PersonalPurva/certwise-v2</a>, so the original repository and its live site stay unchanged. The tests now run automatically on every push.</td></tr>
         <tr><td>3 Oct, ~8:40 PM</td><td>Deploy both the sites on the Purva9665 account.</td>
           <td>Pushed both projects to the Purva9665 GitHub account as public repositories and switched on GitHub Pages for each. Original: <a href="https://purva9665.github.io/certwise/">purva9665.github.io/certwise</a> (code: <a href="https://github.com/Purva9665/certwise">Purva9665/certwise</a>). Version 2: <a href="https://purva9665.github.io/certwise-v2/">purva9665.github.io/certwise-v2</a> (code: <a href="https://github.com/Purva9665/certwise-v2">Purva9665/certwise-v2</a>). Checked that every page and data file loads. The original's files were not changed. On GitHub Pages version 2 runs without the live check with the issuer, because that needs the server (<code>npm start</code>); everything else works.</td></tr>
+        <tr><td>3 Oct, ~8:50 PM</td><td>Search more and dive deeper to find the links of the references, and stick to the problem statement.</td>
+          <td>Found 15 more references and read each one's exact words on its own page: official sources (UGC's list, a Rajya Sabha reply, DigiLocker NAD), large surveys (Pearson VUE with 23,714 candidates, Coursera's report with India numbers), two research papers on what online certificates are worth, and the open standards our genuineness check uses (Open Badges, W3C Verifiable Credentials). Sources that were real but not about certificates were left out, and so were numbers we could not find on the page. The full list is in <a href="#research">Research</a>. The slides have not been changed.</td></tr>
       </table>
     </section>
 
@@ -86,6 +88,71 @@
           <td><a href="https://tce.edu/sites/default/files/naac/index/c1/c1-ca-1-3-2.pdf">College NAAC file (TCE)</a></td></tr>
       </table>
       <p class="small">Key point: fake certificates are mostly an employer and university problem (forged degrees, fake universities). For students the bigger problem is value - a ₹9 workshop certificate is completely genuine but worth very little. So we check both.</p>
+
+      <h3>More references for the problem statement (3 Oct, evening)</h3>
+      <p>Problem statement: <em>students can't easily check whether a certificate is genuine, or what it is worth in the job market.</em> We searched again for stronger sources (official pages, large surveys, research papers) and kept only what fits this problem statement. Each page was downloaded and searched for the exact words.</p>
+
+      <p><strong>A. "Is it genuine?" - fake certificates are a real, large problem in India</strong></p>
+      <table>
+        <tr><th>What it proves</th><th>Proof (words on the page)</th><th>Source</th></tr>
+        <tr><td>UGC's own list has 32 fake universities</td>
+          <td class="quote">"State-wise list of Fake Universities as on February, 2026" - the table has 32 rows</td>
+          <td><a href="https://www.ugc.gov.in/universitydetails/Fakeuniversity">UGC (official)</a></td></tr>
+        <tr><td>The Government confirmed it in Parliament</td>
+          <td class="quote">"has identified 32 fake universities across the country as per its latest list published in February 2026" (written reply in the Rajya Sabha)</td>
+          <td><a href="https://aninews.in/news/national/general-news/ugc-identifies-32-fake-universities-centre-asks-states-to-take-legal-action-against-them20260805191438/">ANI, 5 Aug 2026</a></td></tr>
+        <tr><td>Fake certificates are made in bulk</td>
+          <td class="quote">"authorities recovered over one lakh counterfeit certificates bearing seals of various universities across India" · "charged between Rs 50,000 and Rs 1.5 lakh for each fake certificate"</td>
+          <td><a href="https://news.careers360.com/kerala-police-busts-10-member-interstate-gang-fake-university-certificates-one-lakh-counterfeit-seals-pollachi">Careers360, 10 Dec 2025</a></td></tr>
+        <tr><td>Employers do find fake certificates when they check</td>
+          <td class="quote">"Education checks: 5% flagged discrepancies due to fake certificates or degrees from blacklisted institutions." (data from October 2024 to March 2025)</td>
+          <td><a href="https://authbridge.com/workforce-fraud-files-2025/">AuthBridge Workforce Fraud Files 2025</a> (the line is in <a href="https://mediabrief.com/authbridge-workforce-fraud-report-2025/">Mediabrief</a> and <a href="https://www.tribuneindia.com/news/discrepancies/6-discrepancy-in-white-collar-hires-4-in-gig-workers-authbridge-report-finds-misrepresentation">The Tribune</a>)</td></tr>
+        <tr><td>Students are sold internship certificates</td>
+          <td class="quote">"pressure to secure internships has spawned a shady market in fake certificates. Companies have sprung up in Noida solely to issue internship certificates for a price."</td>
+          <td><a href="https://m.thewire.in/article/education/indias-education-scam-from-fake-data-to-fake-degrees-and-fake-claims">The Wire, 27 Feb 2026</a></td></tr>
+        <tr><td>Even an IIT had to warn students</td>
+          <td class="quote">IIT Roorkee "has issued a statement cautioning students and stakeholders against fraudulent internship and training programmes"</td>
+          <td><a href="https://news.careers360.com/iit-roorkee-fake-internship-scam-warning-third-party-training-fraud-students-launched-global-spark-ihub">Careers360, 20 Mar 2026</a></td></tr>
+      </table>
+
+      <p><strong>B. "What is it worth?" - certificates do have market value, but not equal value</strong></p>
+      <table>
+        <tr><th>What it proves</th><th>Proof (words on the page)</th><th>Source</th></tr>
+        <tr><td>Certification pays, measured on a large sample</td>
+          <td class="quote">"Responses from 23,714 candidates in 150 countries are included in this report." · "32% of candidates received a salary increase after earning certification." · "In India, 32% had received job promotions at the time of the survey and 46% were hoping to."</td>
+          <td><a href="https://www.pearsonvue.com/content/dam/VUE/vue/en/documents/voc/pearson-vue-2025-value-of-certification-report.pdf">Pearson VUE 2025 Value of IT Certification report (PDF)</a> · <a href="https://www.pearsonvue.com/us/en/about/news/2025/certifications-fuel-the-success-in-the-age-of-ai.html">press release</a></td></tr>
+        <tr><td>Employers pay more, and more for some certificates than others</td>
+          <td class="quote">"90% of employers are now willing to offer higher starting salaries—often 10–15% more—for candidates with micro-credentials" · "Most offer 10–15% more for credit-bearing vs. non-credit credentials"</td>
+          <td><a href="https://blog.coursera.org/new-coursera-report-shows-strong-employer-and-student-roi-for-industry-micro-credentials-higher-starting-salaries-greater-work-readiness-reduced-training-costs/">Coursera blog, 29 Apr 2025</a> · <a href="https://www.coursera.org/enterprise/resources/ebooks/micro-credentials-report-2025">report page</a></td></tr>
+        <tr><td>The same in India</td>
+          <td class="quote">"97% are willing to offer higher starting salaries to candidates who hold them" · "93% prefer hiring candidates with credit-bearing credentials over those without" · "1 in 3 Indian students have earned a micro-credential"</td>
+          <td><a href="https://cxotoday.com/media-coverage/97-of-indian-employers-willing-to-offer-higher-starting-salaries-to-candidates-with-micro-credentials/">Coursera's India findings (CXOToday, 30 Apr 2025)</a></td></tr>
+        <tr><td>A certificate shown to employers leads to more jobs (randomised experiment)</td>
+          <td class="quote">"We conducted a randomized experiment with over 800,000 online certificate earners from developing countries who lack college degrees" · "The intervention increased new employment by 6% (1.0 percentage point), with larger effects of 9% (1.2 percentage points) for jobs related to certificates."</td>
+          <td><a href="https://arxiv.org/abs/2405.00247">Athey and Palikot, arXiv:2405.00247</a></td></tr>
+        <tr><td>An online course certificate helps, but is not worth the same as a degree (hiring experiment with made-up profiles)</td>
+          <td class="quote">"Respondents preferred all traditional degrees over a MOOC; MOOCs do not serve as substitutes for traditional postsecondary credentials." · "Results demonstrate a 61-percentage point preference for MOOC credentials compared to no MOOC credential"</td>
+          <td><a href="https://doi.org/10.1177/2332858420973577">Rivas, Baker and Evans, AERA Open, 2020</a> (abstract checked on <a href="https://eric.ed.gov/?id=EJ1280170">ERIC</a>)</td></tr>
+      </table>
+
+      <p><strong>C. How checking works - the open standards our genuineness check uses</strong></p>
+      <table>
+        <tr><th>What it proves</th><th>Proof (words on the page)</th><th>Source</th></tr>
+        <tr><td>A badge can be verified at its own web address (this is what our live check with Credly does)</td>
+          <td class="quote">"Hosted badge Assertions that have an HTTP(s) id simply need to declare a verification type of HostedBadge, and verification will use the Assertion's id property."</td>
+          <td><a href="https://www.imsglobal.org/spec/ob/v2p0/">Open Badges 2.0 specification, 12 April 2018</a></td></tr>
+        <tr><td>The newest badge standard</td>
+          <td class="quote">"aligns with the conventions of the Verifiable Credentials Data Model v2.0" · "Open Badges are verifiable and shareable digital credentials"</td>
+          <td><a href="https://www.imsglobal.org/spec/ob/v3p0/">Open Badges 3.0 specification</a> · <a href="https://www.1edtech.org/1edtech-article/new-open-badges-30-standard-provides-enhanced-security-and-mobility/411060">1EdTech, 29 May 2024</a></td></tr>
+        <tr><td>The web standard for tamper-proof certificates</td>
+          <td class="quote">"W3C Recommendation 15 May 2025" · "A verifiable credential is a specific way to express a set of claims made by an issuer, such as a driver's license or an education certificate."</td>
+          <td><a href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials Data Model v2.0</a></td></tr>
+        <tr><td>What the Government's depository checks (genuineness of academic awards; it gives no market value)</td>
+          <td class="quote">"Allows Employers and other persons (with consent of the concerned Student) to verify the authenticity of any Academic Award"</td>
+          <td><a href="https://nad.digilocker.gov.in/about">DigiLocker National Academic Depository</a></td></tr>
+      </table>
+
+      <p class="small"><strong>Checked and left out:</strong> "fake certificates given to over 10 lakh people from 22 universities" (Kerala case) - those numbers were not on the page we checked, so we only say "over one lakh certificates recovered". "28% of job applicants submit fake degrees" (AuthBridge, 2020) - old, and it is a share of education discrepancies, not of applicants. The ASCI annual report 2024-25, the Ministry of Education's ed-tech advisory (2021), the CCPA coaching-advertisement guidelines (2024) and the India Skills Report 2026 are real sources, but they are about advertisements, coaching or employability rather than certificates, so they do not fit this problem statement. The official SIH page for SIH25029 could not be opened, so that reference stays as SIH Navigator.</p>
     </section>
 
     <section class="box" id="exists">
