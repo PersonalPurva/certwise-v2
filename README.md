@@ -7,6 +7,9 @@ She Solves 3.0 · Team Ctrl Freaks · Track: Web & Software Development · Domai
 > issuer**, a **text reader** for certificates with no QR code, **camera** QR scanning, checking **any**
 > certificate with three questions, **13 more certificates**, a **downloadable PDF report**, tests on every push
 > and a container file.
+>
+> Live copies on the Purva9665 account: https://purva9665.github.io/certwise-v2/ (this version; the live check
+> is skipped there because it needs the server) and https://purva9665.github.io/certwise/ (the first version).
 
 Students collect certificates but can't easily check two things: **is it genuine?** and **what is it worth in the
 job market?** Every issuer verifies certificates in its own way (Credly badges, coursera.org/verify links,
