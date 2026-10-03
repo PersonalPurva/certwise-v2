@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CertWise - Project log</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>CertWise (version 2) - Project log</h1>
+    <p>Everything we worked on: research, decisions, what we built and how we checked it. Team Ctrl Freaks · She Solves 3.0</p>
+  </header>
+
+  <main>
+
+    <section class="box">
+      <h2>At a glance</h2>
+      <table>
+        <tr><th>Hackathon</th><td>She Solves 3.0 (PCCOE ACM-W) · Theme "Time Stone - Ideas Beyond Time" · Track: Web &amp; Software Development · Domain: Education</td></tr>
+        <tr><th>Problem</th><td>Students can't easily check whether a certificate is genuine, or what it is worth in the job market.</td></tr>
+        <tr><th>Solution</th><td>CertWise: one free check for any certificate - <b>is it genuine?</b> and <b>what is it worth?</b> - with a source for every fact.</td></tr>
+        <tr><th>This copy</th><td><a href="index.html">Open CertWise version 2</a> - a copy of the original with four additions. The original is unchanged and still live at <a href="https://personalpurva.github.io/certwise/">personalpurva.github.io/certwise</a> (code: <a href="https://github.com/PersonalPurva/certwise">github.com/PersonalPurva/certwise</a>). This copy's code: <a href="https://github.com/PersonalPurva/certwise-v2">github.com/PersonalPurva/certwise-v2</a>.</td></tr>
+        <tr><th>Rounds</th><td>Round 1 - idea + 6-slide PPT, due 3 Oct 2026, 11:59 PM · Round 2 - prototype + GitHub + 10-minute demo, 5 Oct · Round 3 - 5-hour build at PCCOE, 9 Oct</td></tr>
+        <tr><th>Status</th><td>44 certificates · 17 official verification methods · UGC fake-university list · check any certificate with 3 questions · live check with the issuer (Credly, Coursera, edX) · certificate upload (image or PDF, 5 MB limit) with a text reader · camera QR scan · downloadable PDF report · 149 automated tests passing · monthly refresh built, waiting for a key</td></tr>
+      </table>
+      <p class="small">Jump to: <a href="#history">History</a> · <a href="#research">Research</a> · <a href="#exists">Does it already exist?</a> · <a href="#issuers">How issuers verify</a> · <a href="#built">What we built</a> · <a href="#refresh">Data refresh</a> · <a href="#testing">Testing</a> · <a href="#next">What's next</a></p>
+    </section>
+
+    <section class="box" id="history">
+      <h2>History</h2>
+      <p class="small">Every request and decision in order (IST). Updated every time the project changes.</p>
+      <table>
+        <tr><th>When</th><th>Request / decision</th><th>What was done</th></tr>
+        <tr><td>3 Oct, 10:24 AM</td><td>Teammates proposed a platform that only checks a certificate's genuineness and market value score. Does it already exist?</td>
+          <td>Checked government systems, verification companies, salary / value tools, SIH 2025 statements and hackathon projects (see <a href="#exists">Does it already exist?</a>).</td></tr>
+        <tr><td>3 Oct, ~10:45 AM</td><td>Explained why SIH lists were checked.</td>
+          <td>SIH publishes how many teams submitted ideas for each statement - the best public measure of how crowded an idea is among student teams.</td></tr>
+        <tr><td>3 Oct, ~10:50 AM</td><td><b>Decision: this is now our problem statement.</b> Dive as deep as possible.</td>
+          <td>Deep research: how every issuer verifies certificates, the UGC fake-university list, data sources for market value, privacy law, and close existing tools (CertForge, SEEK Pass, Reclaim Protocol, TrueDoc, LegitDoc, Certopus, CertifyMe).</td></tr>
+        <tr><td>3 Oct, ~11:00 AM</td><td>Change everything we have made, and remove everything previous.</td>
+          <td>Rebuilt the app (genuineness check + market value score + QR from a photo), the 6-slide deck, the slide notes, the README and this log. The earlier version is removed (it stays only in the GitHub commit history).</td></tr>
+        <tr><td>3 Oct, ~1:00 PM</td><td>Add more design to the prototype.</td>
+          <td>New look in the deck's emerald and gold colours: hero header with live numbers, a guided 3-step form with icons and example chips, a drag-and-drop area for the certificate file, status blocks with icons, a ring gauge for the market value score, point dots for each check, job cards with salary, and a phone layout. The checks themselves did not change.</td></tr>
+        <tr><td>3 Oct, ~1:20 PM</td><td>The upload should have a size limit and accept more types, like PDF.</td>
+          <td>Upload now accepts PNG, JPG, WEBP and PDF, up to 5 MB; other types and bigger files are refused with a clear message. PDFs are scanned for a QR code on the first 3 pages and for clickable or printed links (pdf.js). 79 tests. Deck and notes updated to match.</td></tr>
+        <tr><td>3 Oct, ~1:45 PM</td><td>What more can be added?</td>
+          <td>Listed ten possible additions with the effort for each (check any certificate, bulk / resume check, browse and compare, camera scan, validity check, more certificates, live job-ad counts, report download, Hindi / Marathi, report a fake).</td></tr>
+        <tr><td>3 Oct, ~2:00 PM</td><td><b>Keep the current version unchanged, copy it, and add features 1, 4, 6 and 8.</b></td>
+          <td>Copied the app to a new folder (version 2); the original folder, GitHub repo and live site were not touched. Added: (1) a 3-question check for any certificate not in our list, (4) QR scanning with the phone camera, (6) 13 more certificates and 3 more verification methods, each fact checked on the official page, (8) a downloadable one-page PDF report with clickable proof links. 114 tests.</td></tr>
+        <tr><td>3 Oct, ~4:30 PM</td><td>Looking at a winning SIH deck's tech stack: what is our stack, and what can we add later (for Round 2)?</td>
+          <td>Listed our stack layer by layer (built vs planned) and tested what a live check could use. Found that Credly, Coursera and edX answer differently for real and made-up certificate IDs, so a small API can ask the issuer directly. A first piece is in place (<code>api/live.js</code>, the <code>/api/live</code> route and helper functions) but it is <b>not connected to the page yet</b>. The Round 2 list is in <a href="#round2">Planned for Round 2</a>.</td></tr>
+        <tr><td>3 Oct, ~8:15 PM</td><td>Use the Round 2 copy and add the items from option B.</td>
+          <td>Added to this copy: (1) a <b>live check with the issuer</b> - the page asks our server, which asks Credly, Coursera or edX whether the certificate exists and reads the badge name, issuer and dates; (2) a <b>text reader</b> for certificates with no QR code; (3) tests on every push and a container file; (4) a "report a wrong fact" link. Tested against the real issuers with made-up and public IDs. 149 tests. The original was not touched.</td></tr>
+        <tr><td>3 Oct, ~8:50 PM</td><td>Push it to GitHub.</td>
+          <td>Published this copy as its own repository, <a href="https://github.com/PersonalPurva/certwise-v2">PersonalPurva/certwise-v2</a>, so the original repository and its live site stay unchanged. The tests now run automatically on every push.</td></tr>
+      </table>
+    </section>
+
+    <section class="box" id="research">
+
+      <h2>Research: is this a real problem?</h2>
+      <p>Every number was checked on its source page. The exact words are in the "Proof" column.</p>
+      <table>
+        <tr><th>Finding</th><th>Proof (words on the page)</th><th>Source</th></tr>
+        <tr><td>96% of Indian students believe a certificate will help them get a job</td>
+          <td class="quote">"96% Indian students believe professional certification will land them a job: Coursera survey"</td>
+          <td><a href="https://news.careers360.com/96-percent-indian-students-believe-professional-certification-will-land-them-job-coursera-survey">Careers360</a></td></tr>
+        <tr><td>Employers value some certificates far more than others</td>
+          <td class="quote">"A 2026 survey of 200+ Indian hiring managers found that IIT/NPTEL certificates rank highest overall for employer recognition, ahead of Coursera certificates"</td>
+          <td><a href="https://gradright.com/coursera-vs-swayam-vs-gradright-which-free-courses-do-indian-employers-actually-value/">GradRight</a></td></tr>
+        <tr><td>32 fake universities on UGC's list (Feb 2026)</td>
+          <td class="quote">"32 fake universities across India" - every name listed by state</td>
+          <td><a href="https://university.careers360.com/articles/ugc-fake-universities-in-india-2026">Careers360</a></td></tr>
+        <tr><td>33% of misleading ads monitored by ASCI were from education</td>
+          <td class="quote">"As many as 33 per cent of 'objectionable or misleading' ads monitored as part of an Advertising Standards Council of India (ASCI) survey were found to be from the education sector"</td>
+          <td><a href="https://theprint.in/india/ed-tech-ads-draw-most-complaints-are-misleading-says-watchdog-report/1016312/">ThePrint</a></td></tr>
+        <tr><td>A ₹10 AI course followed by a ₹14,000 upsell</td>
+          <td class="quote">"...enrolled for an AI course organized by two IIT graduates for Rs 10 and after finishing the session, they started upselling around Rs 14,000 for 4-5 months."</td>
+          <td><a href="https://www.storyboard18.com/how-it-works/as-ai-hype-soars-fake-courses-upselling-scams-rise-sharply-asci-warns-against-misleading-claims-85381.htm">Storyboard18, Dec 2025</a></td></tr>
+        <tr><td>Colleges must collect students' MOOC certificates as proof for NAAC</td>
+          <td>(summary, not a quote) NAAC metric 1.3.2 counts students who completed MOOCs (SWAYAM / NPTEL ...) and asks for completion certificates as evidence</td>
+          <td><a href="https://tce.edu/sites/default/files/naac/index/c1/c1-ca-1-3-2.pdf">College NAAC file (TCE)</a></td></tr>
+      </table>
+      <p class="small">Key point: fake certificates are mostly an employer and university problem (forged degrees, fake universities). For students the bigger problem is value - a ₹9 workshop certificate is completely genuine but worth very little. So we check both.</p>
+    </section>
+
+    <section class="box" id="exists">
+      <h2>Does a "genuine + market value" platform already exist?</h2>
+      <h4>1. Checking if a certificate is genuine - exists, and crowded</h4>
+      <table>
+        <tr><th>Existing</th><th>What it does</th><th>What it misses</th></tr>
+        <tr><td><a href="https://nad.digilocker.gov.in/">DigiLocker - National Academic Depository</a></td><td>Government store of degrees and mark sheets; employers verify with the student's permission</td><td>Degrees only; no market value</td></tr>
+        <tr><td><a href="https://nqr.gov.in/aboutus">NCVET National Qualifications Register</a></td><td>Official record of NSQF-aligned qualifications</td><td>Vocational qualifications only</td></tr>
+        <tr><td><a href="https://gverify.annauniv.edu/">University portals</a>, <a href="https://work.icredify.com/degree-certificate-verification.html">iCredify</a>, <a href="https://in.springverify.com/screenings/education-verification/">SpringVerify</a></td><td>Verify degrees for employers</td><td>Paid / employer-only; no value</td></tr>
+        <tr><td><a href="https://certforge-crem.onrender.com/">CertForge</a></td><td>Bulk NPTEL certificate checks by QR, for colleges</td><td>NPTEL only; no market value</td></tr>
+        <tr><td>SEEK Pass, <a href="https://dev.reclaimprotocol.org/provider/details/3ef2059d-ec1e-4107-8187-e35157e527ad">Reclaim Protocol</a></td><td>Verified credential wallet (Australia); cryptographic proofs of Udemy / HackerRank achievements</td><td>Not for Indian students; no value score</td></tr>
+        <tr><td><a href="https://truedoc.io/tools/fake-document-checker">TrueDoc</a></td><td>AI "trust score" for any uploaded document (forgery signs)</td><td>Generic documents; can't confirm with the issuer; no value</td></tr>
+        <tr><td><a href="https://www.truecred.site/">TrueCred</a>, LegitDoc, Certopus, CertifyMe</td><td>Issue new tamper-proof certificates with QR / blockchain</td><td>Only work for certificates they issue</td></tr>
+        <tr><td><a href="https://sih-nav.vercel.app/">SIH 2025 - SIH25029 "Authenticity Validator for Academia"</a></td><td><b>142 team submissions</b> - OCR, AI forgery detection, blockchain</td><td>Genuineness only</td></tr>
+      </table>
+      <h4>2. Scoring a certificate's market value - only pieces exist</h4>
+      <table>
+        <tr><th>Existing</th><th>What it does</th><th>What it misses</th></tr>
+        <tr><td><a href="https://info.credly.com/product/labor-market">Credly Labor Market Insights</a></td><td>Job postings, salary ranges and employers for a badge's skills</td><td>Credly badges only; mainly U.S. data; no score or verdict</td></tr>
+        <tr><td><a href="https://crucialexams.com/tools/certification-salary-finder">CrucialExams Certification Salary Estimator</a></td><td>Salary for jobs asking for an IT certification</td><td>"only provides salary estimates in the USA"; no verdict</td></tr>
+        <tr><td><a href="https://www.payscale.com/research/US/Certification">Payscale</a>, ROI calculators</td><td>Pay / salary-uplift by certification</td><td>U.S. / foreign data; for professionals</td></tr>
+        <tr><td><a href="https://collegevidya.com/courses/chatgpt-certification-online/worth-it/">College Vidya "worth it" pages</a></td><td>Says a course is worth it</td><td>Promotional; earns through admissions - not independent</td></tr>
+      </table>
+      <h4>3. Result</h4>
+      <ul>
+        <li><b>Genuine + market value, for any issuer, for Indian students, in one place: not found.</b> The closest is Credly (verified badge + job data), but only for its own badges, with mostly U.S. data and no score.</li>
+        <li>Genuineness on its own is crowded (142 SIH teams, government systems, paid verification companies) - so our edge is the <b>combination</b>, <b>any issuer</b> (no partnership needed) and <b>proof for every fact</b>.</li>
+      </ul>
+      <p class="small">Limits: "not found" means our searches of the web, SIH lists, Devpost / Devfolio, GitHub and the Play Store didn't turn it up.</p>
+    </section>
+
+    <section class="box" id="issuers">
+      <h2>How each issuer lets anyone verify a certificate</h2>
+      <p>This is the data behind the genuineness check (<code>data/verify.js</code>). Each line was checked on the issuer's page.</p>
+      <table>
+        <tr><th>Issuer(s)</th><th>Official way to verify</th></tr>
+        <tr><td>AWS, Cisco (incl. Networking Academy), HashiCorp</td><td>Credly badge link - <a href="https://aws.amazon.com/certification/certification-digital-badges/">AWS</a> · <a href="https://www.cisco.com/site/us/en/learn/training-certifications/certifications/digital-badges/index.html">Cisco</a></td></tr>
+        <tr><td>Google Cloud</td><td>Credly (older certificates on Accredible) - <a href="https://support.google.com/qwiklabs/answer/14779166">Google</a></td></tr>
+        <tr><td>Microsoft (AZ-900, AZ-104, PL-300)</td><td>Microsoft Learn share link - <a href="https://learn.microsoft.com/en-us/credentials/certifications/view-share-transcript">Microsoft Learn</a></td></tr>
+        <tr><td>Coursera (Google, Meta, DeepLearning.AI certificates)</td><td>coursera.org/verify/CODE on every certificate - <a href="https://blog.coursera.org/the-anatomy-of-a-verified-certificate-shareable">Coursera</a></td></tr>
+        <tr><td>NPTEL</td><td>QR code on the certificate opens it on nptel.ac.in - <a href="https://naac2024.sjctnc.edu.in/assets/C_1/1.3.2/Course_Certificates/SWAYAM_NPTEL_CC/SWAYAM-NPTEL_Certificates-2020-2021.pdf">sample certificates</a></td></tr>
+        <tr><td>Red Hat</td><td>Certificate number 123-456-789 at <a href="https://rhtapps.redhat.com/verify">rhtapps.redhat.com/verify</a></td></tr>
+        <tr><td>CompTIA</td><td>Verification code at <a href="https://verify.comptia.org/">verify.comptia.org</a></td></tr>
+        <tr><td>ISC2 (CC, CISSP)</td><td>Last name + member ID at <a href="https://www.isc2.org/MemberVerification">ISC2 member verification</a></td></tr>
+        <tr><td>EC-Council (CEH)</td><td><a href="https://aspen.eccouncil.org/Verify">ASPEN verify</a></td></tr>
+        <tr><td>Linux Foundation (CKA)</td><td><a href="https://training.linuxfoundation.org/certification/verify/">Linux Foundation verify</a> or Credly</td></tr>
+        <tr><td>Oracle</td><td>Holder publishes it from CertView, or shares the Credly badge - <a href="https://blogs.oracle.com/oracleuniversity/post/oracle-certification-badges-just-got-a-new-look">Oracle</a></td></tr>
+        <tr><td>Udemy</td><td>Certificate link printed on the certificate (ude.my or udemy.com) - <a href="https://support.udemy.com/hc/en-us/articles/14291607637015-Certificates-of-Completion-Frequently-Asked-Questions">Udemy</a></td></tr>
+        <tr><td>edX</td><td>Certificate link (courses.edx.org/certificates/ID) - <a href="https://www.edx.org/verified-certificate">edX</a></td></tr>
+        <tr><td>Internshala Trainings</td><td>Certificate number at <a href="https://trainings.internshala.com/verify-certificate/">Internshala's certificate verification page</a></td></tr>
+        <tr><td>GitHub (Foundations)</td><td>Credly badge - <a href="https://github.blog/news-insights/company-news/students-start-building-your-skills-with-the-github-foundations-certification">GitHub</a></td></tr>
+        <tr><td>LinkedIn Learning, Great Learning, TCS iON, Forage, Simplilearn</td><td>No public verification page found - shown as "No public check found"</td></tr>
+        <tr><td>HackerRank, Kaggle, freeCodeCamp</td><td>Public certificate links: hackerrank.com/certificates/..., kaggle.com/learn/certification/..., freecodecamp.org/certification/...</td></tr>
+        <tr><td>Paid workshops, participation certificates, paid "internships"</td><td><b>No official record</b> - shown as "Can't be verified"</td></tr>
+      </table>
+    </section>
+
+    <section class="box" id="built">
+      <h2>What we built</h2>
+      <h4>Input</h4>
+      <ul>
+        <li>Certificate name (typos are fine - <b>edit distance</b>, Levenshtein, dynamic programming).</li>
+        <li>Verification link or certificate ID - or the <b>certificate file</b>: PNG, JPG, WEBP or PDF, up to 5 MB. Images are scanned for a QR code (jsQR); PDFs for a QR code on the first 3 pages and for clickable or printed links (pdf.js). Other file types and bigger files are refused with a clear message. Everything runs in the browser - the file is never uploaded.</li>
+        <li>Or <b>scan the QR code with the camera</b> (best on a phone): the back camera opens, a frame is checked four times a second, and the camera switches off as soon as a code is found.</li>
+        <li>Optional: the college / institute that issued it.</li>
+        <li><b>Not in our list?</b> Three quick questions - who issued it, how it was earned, does it have a verification link or ID - and the same score is worked out from the answers, clearly marked as based on the user's answers.</li>
+        <li><b>Download report:</b> every result can be saved as a one-page PDF with clickable proof links.</li>
+      </ul>
+      <h4>Answer 1 - Is it genuine?</h4>
+      <ul>
+        <li><b>Official verification link</b> - the link is on the issuer's own verification site (domain + path checked).</li>
+        <li><b>Look-alike website</b> - the link copies the issuer's name or is a small typo of it (coursera-verify.com, credlly.com).</li>
+        <li><b>ID looks right / doesn't match the format</b> - e.g. Red Hat 123-456-789, then the official page to confirm.</li>
+        <li><b>Can't be verified</b> - certificate types with no official record.</li>
+        <li><b>Fake university</b> - issuer matched against UGC's list of 32 (typos allowed).</li>
+        <li>We never say "100% genuine" - the last step is always the issuer's own page, linked with one button.</li>
+      </ul>
+      <h4>Answer 2 - What is it worth?</h4>
+      <table>
+        <tr><th>Check</th><th>2 points</th><th>1 point</th><th>0 points</th></tr>
+        <tr><td>Recognition (who gives it)</td><td>Company / body that owns the field, or an IIT</td><td>Learning platform</td><td>Unknown training company</td></tr>
+        <tr><td>Proof of skill (how you earn it)</td><td>Supervised exam</td><td>Online tests / projects</td><td>Attendance, or only finishing the videos / tasks</td></tr>
+        <tr><td>Job demand</td><td>Verified sources, or its jobs are "in demand" in cited reports</td><td>One source / IT under pressure / depends on course</td><td>Not a credential employers ask for</td></tr>
+      </table>
+      <p class="small">70%+ High · 45-69% Medium · below 45% Low. Also shown: price (with proof), fresher salary of the jobs it leads to (with sources), warnings (exam closed, needs work experience) and higher-value certificates in the same field. If the certificate looks fake, its market value is 0%.</p>
+    </section>
+
+    <section class="box" id="refresh">
+      <h2>Keeping prices, salaries and demand current - without fake information</h2>
+      <table>
+        <tr><th></th><th>Free mode (Gemini key)</th><th>Paid mode (Claude key)</th></tr>
+        <tr><td>Where facts come from</td><td>Our script downloads the trusted pages listed in our data; Gemini copies out the facts</td><td>Claude searches the web and reads pages</td></tr>
+        <tr><td>Fact check</td><td colspan="2">The same in both: <code>refresh/verify.js</code> keeps a fact only if its exact quote is on the page and every number is inside the quote.</td></tr>
+        <tr><td>Cost</td><td>₹0</td><td>Pay per use</td></tr>
+      </table>
+      <p class="small">A GitHub Actions job runs it on the 1st of every month. It needs one repository secret - <code>GEMINI_API_KEY</code> (free) or <code>ANTHROPIC_API_KEY</code>. Until then the app uses hand-checked facts, each with a proof link.</p>
+    </section>
+
+    <section class="box" id="testing">
+      <h2>Testing</h2>
+      <ul>
+        <li><b>114 automated tests</b> (<code>npm test</code>): the 13 new certificates and 3 new verification methods, the 3-question check for unlisted certificates, plus search and typos, every genuineness result (official link, wrong page, look-alike, typo domain, wrong issuer, ID formats, no record, fake university with typos, real university not flagged), the upload rules (allowed types, 5 MB limit, empty file), choosing the right link inside a PDF, market value scores, higher-value picks, the fact checker and the free-refresh helpers.</li>
+        <li>Browser checks of all five examples at laptop and phone widths, with no console errors.</li>
+        <li>Upload checks with sample files in <code>tests/</code>: a PNG with a QR code, a PDF with a QR code and a PDF with only a printed link all gave "Official verification link"; a 6 MB file, a .docx file and a damaged PDF were each refused with the right message.</li>
+        <li><b>149 tests</b> now, including the live check with a pretend issuer (so tests never touch the real websites) and the text reader.</li>
+        <li>Live check against the real issuers: made-up IDs on Credly, Coursera and edX gave "No record at the issuer"; a public Credly badge gave "Confirmed by the issuer" with its name, issuer and date; the same badge checked against a different certificate gave "Real, but a different certificate".</li>
+        <li>Text reader: a sample certificate image with no QR code was read in a few seconds; the name and link were filled in and the check ran.</li>
+        <li>Fixed: Credly sent a web page instead of the badge record until we asked for the record only; an unreadable answer now never counts as "confirmed".</li>
+        <li>Version 2 checks in the browser: the 3-question check, a PDF report for four kinds of result (read back to confirm its text and clickable links), and the camera scanner with a simulated camera showing a sample QR code. The camera still needs a try on a real phone.</li>
+        <li>Fixed in version 2: typing "AI-900" found "AZ-900" (a one-letter typo counted the same as an exact match) - exact matches now rank higher; long proof links were cut off in the PDF report - they now show the name and website.</li>
+        <li>Fixed while testing: "Commercial University Ltd." wasn't matched because of the full stop; a fake certificate showed a high market value - it now shows 0% if fake; PDF pages didn't finish drawing when the browser tab was in the background - the page is now drawn in one go, with a 6-second limit.</li>
+        <li>The deck passed file validation and every slide was checked as an image.</li>
+      </ul>
+    </section>
+
+    <section class="box">
+      <h2>Round 1 presentation</h2>
+      <ul>
+        <li>6 slides in the organisers' template, SIH-deck style: Title · Idea · Technical approach · Feasibility · Impact · Research and references.</li>
+        <li>Every number has a reference [1]-[9]; the proof table with the exact source words is in the slide notes file.</li>
+      </ul>
+    </section>
+
+    <section class="box">
+      <h2>Tech used</h2>
+      <p>HTML, CSS, JavaScript (no framework, no backend) · jsQR for reading QR codes, pdf.js for reading PDFs, Tesseract.js for reading printed text and jsPDF for writing the report, all in the browser · a small Node.js API for the live check (Open Badges records from Credly) · the camera through getUserMedia · Node.js for tests and the refresh script · Gemini (free) or Claude API for the monthly refresh · GitHub Actions · GitHub Pages (₹0 server cost).</p>
+    </section>
+
+    <section class="box" id="round2">
+      <h2>Planned for Round 2 (if selected)</h2>
+      <table>
+        <tr><th>What</th><th>What it adds</th><th>Tech</th><th>State</th></tr>
+        <tr><td>Live check with the issuer</td><td>Asks Credly / Coursera / edX whether the certificate exists; shows the badge name, issuer and dates; catches a made-up ID on a real site</td><td>Node.js API, Open Badges records</td><td><b>Built in this copy</b> (needs the server: <code>npm start</code>)</td></tr>
+        <tr><td>Read the text on a certificate (OCR)</td><td>Works when there is no QR code: finds the name, link or ID printed on the image</td><td>Tesseract.js</td><td><b>Built in this copy</b></td></tr>
+        <tr><td>Bulk / resume check</td><td>Placement cells check many certificates at once</td><td>pdf.js text reading, table export</td><td>Planned</td></tr>
+        <tr><td>Browse and compare</td><td>All certificates by field, sorted by market value</td><td>JavaScript</td><td>Planned</td></tr>
+        <tr><td>First real data refresh</td><td>Live, quote-checked prices and salaries on the page</td><td>Gemini API (free key)</td><td>Built - needs the key</td></tr>
+        <tr><td>Tests on every push, container</td><td>Shows an engineering process</td><td>GitHub Actions, Docker</td><td><b>Written</b> - the container is untested (Docker was not running)</td></tr>
+        <tr><td>Publish version 2 with the API</td><td>The live check works online, not just on our laptop</td><td>Render or Railway (free tier)</td><td>Planned</td></tr>
+      </table>
+    </section>
+
+    <section class="box" id="next">
+      <h2>What's next</h2>
+      <ul>
+        <li>Fill in our own survey numbers on slide 5 and submit Round 1 (3 Oct, 11:59 PM).</li>
+        <li>Add a free Gemini key as the <code>GEMINI_API_KEY</code> repository secret and run a small test refresh.</li>
+        <li>Record a 60-90 second backup video of the demo for Round 2 (5 Oct).</li>
+        <li>Try the camera scanner on a real phone.</li>
+        <li>Host the server (for example on Render or Railway) so the live check works online, then decide whether version 2 replaces the original.</li>
+        <li>Later: a bulk / resume check for placement cells; browse and compare; validity (expiry) check.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Team Ctrl Freaks · She Solves 3.0 · <a href="index.html">Back to CertWise</a></p>
+    <p class="small">Last updated 3 Oct 2026.</p>
+  </footer>
+
+</body>
+</html>
