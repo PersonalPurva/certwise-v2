@@ -277,9 +277,12 @@ on the student's answers.
 
 **Team Ctrl Freaks**
 
-| Name | GitHub |
+| Name | Role |
 |---|---|
-| Purva Kadam | [@PersonalPurva](https://github.com/PersonalPurva) |
+| Srushti Chaudhari | Team Leader |
+| Sneha Ghule | Member |
+| Purva Kadam | Member · [@PersonalPurva](https://github.com/PersonalPurva) |
+| Tanishka Kadu | Member |
 
 ## Future Scope / Enhancements
 
