@@ -21,8 +21,8 @@
         <tr><th>Hackathon</th><td>She Solves 3.0 (PCCOE ACM-W) · Theme "Time Stone - Ideas Beyond Time" · Track: Web &amp; Software Development · Domain: Education</td></tr>
         <tr><th>Problem</th><td>Students can't easily check whether a certificate is genuine, or what it is worth in the job market.</td></tr>
         <tr><th>Solution</th><td>CertWise: one free check for any certificate - <b>is it genuine?</b> and <b>what is it worth?</b> - with a source for every fact.</td></tr>
-        <tr><th>This copy</th><td><a href="index.html">Open CertWise version 2</a> - a copy of the original with four additions. The original is unchanged and still live at <a href="https://personalpurva.github.io/certwise/">personalpurva.github.io/certwise</a> (code: <a href="https://github.com/PersonalPurva/certwise">github.com/PersonalPurva/certwise</a>). This copy's code: <a href="https://github.com/PersonalPurva/certwise-v2">github.com/PersonalPurva/certwise-v2</a>. Both are also on the Purva9665 account: <a href="https://purva9665.github.io/certwise/">purva9665.github.io/certwise</a> and <a href="https://purva9665.github.io/certwise-v2/">purva9665.github.io/certwise-v2</a>.</td></tr>
-        <tr><th>Rounds</th><td>Round 1 - idea + 6-slide PPT, due 3 Oct 2026, 11:59 PM · Round 2 - prototype + GitHub + 10-minute demo, 5 Oct · Round 3 - 5-hour build at PCCOE, 9 Oct</td></tr>
+        <tr><th>This copy</th><td><a href="index.html">Open CertWise version 2</a> - a copy of the original with four additions. The original is unchanged and still live at <a href="https://personalpurva.github.io/certwise/">personalpurva.github.io/certwise</a> (code: <a href="https://github.com/PersonalPurva/certwise">github.com/PersonalPurva/certwise</a>). This copy's code: <a href="https://github.com/PersonalPurva/certwise-v2">github.com/PersonalPurva/certwise-v2</a> (the Round 2 repository), live at <a href="https://personalpurva.github.io/certwise-v2/">personalpurva.github.io/certwise-v2</a>. Both are also on the Purva9665 account: <a href="https://purva9665.github.io/certwise/">purva9665.github.io/certwise</a> and <a href="https://purva9665.github.io/certwise-v2/">purva9665.github.io/certwise-v2</a>.</td></tr>
+        <tr><th>Rounds</th><td>Round 1 - idea + 6-slide PPT, 3 Oct 2026 - <b>cleared: we are one of 41 shortlisted teams</b> · Round 2 - prototype + public GitHub repository + online demo, submitted on Unstop from 5 Oct (we are a non-PCCOE team) · Round 3 - 5-hour build at PCCOE, 9 Oct</td></tr>
         <tr><th>Status</th><td>44 certificates · 17 official verification methods · UGC fake-university list · check any certificate with 3 questions · live check with the issuer (Credly, Coursera, edX) · certificate upload (image or PDF, 5 MB limit) with a text reader · camera QR scan · downloadable PDF report · 149 automated tests passing · monthly refresh built, waiting for a key</td></tr>
       </table>
       <p class="small">Jump to: <a href="#history">History</a> · <a href="#research">Research</a> · <a href="#exists">Does it already exist?</a> · <a href="#issuers">How issuers verify</a> · <a href="#built">What we built</a> · <a href="#refresh">Data refresh</a> · <a href="#testing">Testing</a> · <a href="#next">What's next</a></p>
@@ -59,6 +59,8 @@
           <td>Pushed both projects to the Purva9665 GitHub account as public repositories and switched on GitHub Pages for each. Original: <a href="https://purva9665.github.io/certwise/">purva9665.github.io/certwise</a> (code: <a href="https://github.com/Purva9665/certwise">Purva9665/certwise</a>). Version 2: <a href="https://purva9665.github.io/certwise-v2/">purva9665.github.io/certwise-v2</a> (code: <a href="https://github.com/Purva9665/certwise-v2">Purva9665/certwise-v2</a>). Checked that every page and data file loads. The original's files were not changed. On GitHub Pages version 2 runs without the live check with the issuer, because that needs the server (<code>npm start</code>); everything else works.</td></tr>
         <tr><td>3 Oct, ~8:50 PM</td><td>Search more and dive deeper to find the links of the references, and stick to the problem statement.</td>
           <td>Found 15 more references and read each one's exact words on its own page: official sources (UGC's list, a Rajya Sabha reply, DigiLocker NAD), large surveys (Pearson VUE with 23,714 candidates, Coursera's report with India numbers), two research papers on what online certificates are worth, and the open standards our genuineness check uses (Open Badges, W3C Verifiable Credentials). Sources that were real but not about certificates were left out, and so were numbers we could not find on the page. The full list is in <a href="#research">Research</a>. The slides have not been changed.</td></tr>
+        <tr><td>5 Oct, ~3:30 AM</td><td>We are selected for Round 2 (one of 41 shortlisted teams). Create the GitHub repository the organisers asked for, in PersonalPurva.</td>
+          <td>Made this repository, <a href="https://github.com/PersonalPurva/certwise-v2">PersonalPurva/certwise-v2</a> (public), match the organisers' list. Rewrote <code>README.md</code> with every section they asked for, in their order: problem statement, proposed solution, features, tech stack, installation and setup, how to run, project structure, screenshots, team members and future scope. Took nine real screenshots of the running prototype (<code>docs/screenshots/</code>), including the live check with the issuer and the text reader. Switched on GitHub Pages for this repository, so there is a live demo at <a href="https://personalpurva.github.io/certwise-v2/">personalpurva.github.io/certwise-v2</a> (without the live check, which needs the server). Still to add: the other team members' names.</td></tr>
       </table>
     </section>
 
@@ -283,7 +285,7 @@
     </section>
 
     <section class="box" id="round2">
-      <h2>Planned for Round 2 (if selected)</h2>
+      <h2>Round 2 plan (we were selected)</h2>
       <table>
         <tr><th>What</th><th>What it adds</th><th>Tech</th><th>State</th></tr>
         <tr><td>Live check with the issuer</td><td>Asks Credly / Coursera / edX whether the certificate exists; shows the badge name, issuer and dates; catches a made-up ID on a real site</td><td>Node.js API, Open Badges records</td><td><b>Built in this copy</b> (needs the server: <code>npm start</code>)</td></tr>
@@ -299,7 +301,7 @@
     <section class="box" id="next">
       <h2>What's next</h2>
       <ul>
-        <li>Fill in our own survey numbers on slide 5 and submit Round 1 (3 Oct, 11:59 PM).</li>
+        <li>Round 2: add the other team members' names to <code>README.md</code>, then submit the repository link (<a href="https://github.com/PersonalPurva/certwise-v2">github.com/PersonalPurva/certwise-v2</a>) on Unstop. The organisers will send the submission document format separately.</li>
         <li>Add a free Gemini key as the <code>GEMINI_API_KEY</code> repository secret and run a small test refresh.</li>
         <li>Record a 60-90 second backup video of the demo for Round 2 (5 Oct).</li>
         <li>Try the camera scanner on a real phone.</li>
